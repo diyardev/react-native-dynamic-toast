@@ -32,6 +32,24 @@ npm install react-native-safe-area-context
 yarn add react-native-safe-area-context
 ```
 
+### 📱 Expo Support
+
+This package works seamlessly with **Expo** projects! No additional configuration needed.
+
+```bash
+# For Expo projects
+npx expo install @diyardev/react-native-dynamic-toast react-native-safe-area-context
+```
+
+### 🔧 Compatibility
+
+- ✅ **React Native** >= 0.60.0
+- ✅ **Expo SDK** >= 45.0.0
+- ✅ **React** >= 16.8.0
+- ✅ **TypeScript** support included
+- ✅ **iOS** and **Android** support
+- ✅ **New Architecture** (Fabric) ready
+
 ## Quick Start
 
 ### 1. Setup Provider

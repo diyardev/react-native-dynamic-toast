@@ -78,7 +78,7 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onHide, index }) => {
         ))}
       </View>
       <TouchableOpacity onPress={handleHide}>
-        <Text style={{ color: 'white', fontSize: 14, fontWeight: '600' }}>Close</Text>
+        <Text style={{ color: 'white', fontSize: 14, fontWeight: '600' }}>Kapat</Text>
       </TouchableOpacity>
     </Animated.View>
   );
