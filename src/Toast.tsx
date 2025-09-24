@@ -11,7 +11,7 @@ interface ToastItemProps {
 
 const ToastItem: React.FC<ToastItemProps> = ({ toast, onHide, index }) => {
   const opacity = useRef(new Animated.Value(0)).current;
-  const translateY = useRef(new Animated.Value(toast.position === 'top' ? -10 : 10)).current;
+  const translateY = useRef(new Animated.Value((toast.position === 'top' || toast.position === undefined) ? -10 : 10)).current;
 
   useEffect(() => {
     // Show animation
@@ -24,10 +24,10 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onHide, index }) => {
   const handleHide = () => {
     Animated.parallel([
       Animated.timing(opacity, { toValue: 0, duration: 200, useNativeDriver: true }),
-      Animated.timing(translateY, { 
-        toValue: toast.position === 'top' ? -10 : 10, 
-        duration: 200, 
-        useNativeDriver: true 
+      Animated.timing(translateY, {
+        toValue: (toast.position === 'top' || toast.position === undefined) ? -10 : 10,
+        duration: 200,
+        useNativeDriver: true
       }),
     ]).start(() => onHide(toast.id));
   };
@@ -60,9 +60,9 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onHide, index }) => {
     <Animated.View
       style={[
         styles.toast,
-        toast.position === 'top' ? styles.top : styles.bottom,
-        { 
-          opacity, 
+        (toast.position === 'top' || toast.position === undefined) ? styles.top : styles.bottom,
+        {
+          opacity,
           transform: [{ translateY }],
           backgroundColor: getBackgroundColor(),
           marginTop: index > 0 ? 4 : 0, // Spacing between toasts
@@ -90,15 +90,15 @@ export const Toast: React.FC = () => {
 
   if (toasts.length === 0) return null;
 
-  // Group toasts by position
-  const topToasts = toasts.filter(toast => toast.position === 'top');
+  // Group toasts by position - undefined is treated as 'top'
+  const topToasts = toasts.filter(toast => toast.position === 'top' || toast.position === undefined);
   const bottomToasts = toasts.filter(toast => toast.position === 'bottom');
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]} pointerEvents="box-none">
       {/* Top Toasts */}
       {topToasts.length > 0 && (
-        <View style={styles.toastContainer} pointerEvents="box-none">
+        <View style={[styles.toastContainer]} pointerEvents="box-none">
           {topToasts.map((toast, index) => (
             <ToastItem 
               key={toast.id} 
@@ -147,7 +147,11 @@ const styles = StyleSheet.create({
     pointerEvents: 'box-none',
   },
   bottomContainer: {
-    justifyContent: 'flex-end',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingBottom: 20,
   },
   toast: {
     width: '100%',
@@ -165,9 +169,9 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   top: {
-    marginTop: 20,
+    marginTop: 60,
   },
   bottom: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
 });

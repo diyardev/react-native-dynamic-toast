@@ -37,9 +37,9 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
     const id = Math.random().toString(36).substr(2, 9);
     const newToast: ToastMessage = {
       id,
-      duration: 3000, // 3 seconds
-      position: 'top', // Default to top
       ...toast,
+      duration: toast.duration === undefined ? 5000 : toast.duration, // 5 seconds default
+      position: toast.position === undefined ? 'top' : toast.position, // Default to top
     };
 
     setToasts(prev => [...prev, newToast]);
