@@ -14,6 +14,16 @@ A beautiful, dynamic and customizable toast notification system for React Native
 - 📦 **Lightweight** - Minimal dependencies and bundle size
 - 🎪 **Animation** - Smooth enter/exit animations
 
+## Demo
+
+
+https://github.com/user-attachments/assets/8c8f612f-c8b3-4bfe-ae35-748bc7e43d78
+
+
+
+
+
+
 ## Installation
 
 ```bash
