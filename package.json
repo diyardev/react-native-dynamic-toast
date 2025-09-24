@@ -4,6 +4,9 @@
   "description": "A beautiful, dynamic and customizable toast notification system for React Native with TypeScript support",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "lib",
     "README.md"
