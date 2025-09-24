@@ -230,6 +230,14 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Changelog
 
+### 1.2.0
+- **🚀 Enhanced Bottom Positioning** - Fixed bottom toast positioning with absolute layout
+- **⏰ Extended Auto-Dismiss** - Increased default duration to 5 seconds
+- **🔧 Smart Default Handling** - Improved undefined value handling for duration and position
+- **🐛 Critical Bug Fixes** - Fixed spread operator and positioning issues
+- **🎯 Production Ready** - Removed debug messages for clean production builds
+- **📱 Better TypeScript Support** - Enhanced type safety with proper undefined checks
+
 ### 1.0.0
 - Initial release
 - Basic toast functionality
