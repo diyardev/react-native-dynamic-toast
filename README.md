@@ -70,19 +70,19 @@ import { Toast } from 'react-native-dynamic-toast';
 ### 3. Use Toast Functions
 
 ```tsx
-import { Toast } from 'react-native-dynamic-toast';
+import { ToastAPI } from 'react-native-dynamic-toast';
 
 // Basic usage
-Toast.success('Operation completed successfully!');
-Toast.error('Something went wrong!');
+ToastAPI.success('Operation completed successfully!');
+ToastAPI.error('Something went wrong!');
 
 // With custom options
-Toast.success('Success message', { 
+ToastAPI.success('Success message', { 
   duration: 5000, 
   position: 'bottom' 
 });
 
-Toast.error('Error message', { 
+ToastAPI.error('Error message', { 
   duration: 2000, 
   position: 'top' 
 });
@@ -92,13 +92,13 @@ Toast.error('Error message', {
 
 ### Toast Functions
 
-#### `Toast.success(message, options?)`
+#### `ToastAPI.success(message, options?)`
 Shows a success toast notification.
 
-#### `Toast.error(message, options?)`
+#### `ToastAPI.error(message, options?)`
 Shows an error toast notification.
 
-#### `Toast.errorWithValidation(message, errors, options?)`
+#### `ToastAPI.errorWithValidation(message, errors, options?)`
 Shows an error toast with validation errors.
 
 ### Options
@@ -126,15 +126,15 @@ Hook for accessing toast functions programmatically.
 ```tsx
 import React from 'react';
 import { View, Button } from 'react-native';
-import { Toast } from 'react-native-dynamic-toast';
+import { ToastAPI } from 'react-native-dynamic-toast';
 
 export default function ExampleScreen() {
   const showSuccess = () => {
-    Toast.success('Data saved successfully!');
+    ToastAPI.success('Data saved successfully!');
   };
 
   const showError = () => {
-    Toast.error('Failed to save data!');
+    ToastAPI.error('Failed to save data!');
   };
 
   return (
@@ -149,16 +149,16 @@ export default function ExampleScreen() {
 ### Custom Duration and Position
 
 ```tsx
-import { Toast } from 'react-native-dynamic-toast';
+import { ToastAPI } from 'react-native-dynamic-toast';
 
 // Show toast for 5 seconds at the bottom
-Toast.success('This will show for 5 seconds', {
+ToastAPI.success('This will show for 5 seconds', {
   duration: 5000,
   position: 'bottom'
 });
 
 // Show toast at the top with no auto-dismiss
-Toast.error('Important error message', {
+ToastAPI.error('Important error message', {
   duration: 0,
   position: 'top'
 });
@@ -167,17 +167,17 @@ Toast.error('Important error message', {
 ### Validation Errors
 
 ```tsx
-import { Toast } from 'react-native-dynamic-toast';
+import { ToastAPI } from 'react-native-dynamic-toast';
 
 const handleFormSubmit = async () => {
   try {
     await submitForm();
-    Toast.success('Form submitted successfully!');
+    ToastAPI.success('Form submitted successfully!');
   } catch (error) {
     if (error.errors) {
-      Toast.errorWithValidation('Please fix the following errors:', error.errors);
+      ToastAPI.errorWithValidation('Please fix the following errors:', error.errors);
     } else {
-      Toast.error(error.message);
+      ToastAPI.error(error.message);
     }
   }
 };
